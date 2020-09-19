@@ -10,6 +10,7 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
+extern void test_ReadLine_given_a_file_expect_to_read_correctly();
 
 
 /*=======Mock Management=====*/
@@ -42,10 +43,39 @@ void verifyTest(void)
   CMock_Verify();
 }
 
+/*=======Test Runner Used To Run Each Test=====*/
+static void run_test(UnityTestFunction func, const char* name, int line_num)
+{
+    Unity.CurrentTestName = name;
+    Unity.CurrentTestLineNumber = line_num;
+#ifdef UNITY_USE_COMMAND_LINE_ARGS
+    if (!UnityTestMatches())
+        return;
+#endif
+    Unity.NumberOfTests++;
+    UNITY_CLR_DETAILS();
+    UNITY_EXEC_TIME_START();
+    CMock_Init();
+    if (TEST_PROTECT())
+    {
+        setUp();
+        func();
+    }
+    if (TEST_PROTECT())
+    {
+        tearDown();
+        CMock_Verify();
+    }
+    CMock_Destroy();
+    UNITY_EXEC_TIME_STOP();
+    UnityConcludeTest();
+}
+
 /*=======MAIN=====*/
 int main(void)
 {
   UnityBegin("test_ReadLine.c");
+  run_test(test_ReadLine_given_a_file_expect_to_read_correctly, "test_ReadLine_given_a_file_expect_to_read_correctly", 13);
 
   return UnityEnd();
 }

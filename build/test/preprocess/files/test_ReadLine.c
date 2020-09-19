@@ -18,3 +18,23 @@ void tearDown(void)
 {
 
 }
+
+
+
+void test_ReadLine_given_a_file_expect_to_read_correctly()
+
+{
+
+    char **lines;
+
+    char *filename = "C:/Projects/textFile/test_file.txt";
+
+    lines = readLines(filename);
+
+    UnityAssertEqualString((const char*)(("Hello Welcome to my house\n")), (const char*)((lines[7])), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(18));
+
+}

@@ -38,6 +38,7 @@ void test_SearchAndCount_given_scientist_word_and_expect_count_to_be_0(void)
 
 void searchAndCountWordInLines_given_a_file_with_5_line_and_FindTheWord_yummy_expect_a_count_to_be_4(void){
  int count;
+ char **Lines = malloc(sizeof(char *) * 1024);
  char *filename =  "./test/data/my_file.txt";
  char *word = "yummy";
  char *lines[] = {
@@ -48,8 +49,10 @@ void searchAndCountWordInLines_given_a_file_with_5_line_and_FindTheWord_yummy_ex
    "The dish look delicious!"
    NULL
  };
+ for(int i = 0; lines[i] != NULL; i++)
+    Lines[i] = lines[i];
  //Mock
- readLines_ExpectAndReturn(filename,(char**)&lines);
+ readLines_ExpectAndReturn(filename,lines);
  //run the code under test
  count = searchAndCountWordInLines(word,filename);
  //Test
@@ -58,6 +61,7 @@ void searchAndCountWordInLines_given_a_file_with_5_line_and_FindTheWord_yummy_ex
 
 void searchAndCountWordInLines_given_a_file_with_6_line_and_FindTheWord_good_expect_a_count_to_be_6(void){
  int count;
+ char **Lines = malloc(sizeof(char *) * 1024);
  char *filename =  "./test/data/my_file.txt";
  char *word = "yummy";
  char *lines[] = {
@@ -69,8 +73,10 @@ void searchAndCountWordInLines_given_a_file_with_6_line_and_FindTheWord_good_exp
    "She is not a go person"
    NULL
  };
+ for(int i = 0; lines[i] != NULL; i++)
+    Lines[i] = lines[i];
  //Mock
- readLines_ExpectAndReturn(filename,(char**)&lines);
+ readLines_ExpectAndReturn(filename,lines);
  //run the code under test
  count = searchAndCountWordInLines(word,filename);
  //Test
@@ -79,6 +85,7 @@ void searchAndCountWordInLines_given_a_file_with_6_line_and_FindTheWord_good_exp
 
 void searchAndCountWordInLines_given_a_file_with_6_line_and_FindTheWord_good_expect_a_count_to_be_0(){
  int count;
+ char **Lines = malloc(sizeof(char *) * 1024);
  char *filename =  "./test/data/my_file.txt";
  char *word = "yummy";
  char *lines[] = {
@@ -90,8 +97,10 @@ void searchAndCountWordInLines_given_a_file_with_6_line_and_FindTheWord_good_exp
    "Hello,how are you ?"
    NULL
  };
+ for(int i = 0; lines[i] != NULL; i++)
+    Lines[i] = lines[i];
  //Mock
- readLines_ExpectAndReturn(filename,(char**)&lines);
+ readLines_ExpectAndReturn(filename,lines);
  //run the code under test
  count = searchAndCountWordInLines(word,filename);
  //Test

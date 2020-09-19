@@ -28,7 +28,7 @@ void test_SearchAndCountWordInLines_given_a_file_with_5_lines_and_FindTheWord_yu
 
     int count;
 
-    char *filename = "./test/data/my_file.txt";
+    char *filename = "C:/Projects/textFile/test_file.txt";
 
     char *word = "yummy";
 
@@ -50,7 +50,7 @@ void test_SearchAndCountWordInLines_given_a_file_with_6_lines_and_FindTheWord_go
 
     int count;
 
-    char *filename = "./test/data/my_file.txt";
+    char *filename = "C:/Projects/textFile/test_file.txt";
 
     char *word = "good";
 
@@ -72,7 +72,7 @@ void test_SearchAndCountWordInLines_given_a_file_with_6_lines_and_FindTheWord_me
 
     int count;
 
-    char *filename = "./test/data/my_file.txt";
+    char *filename = "C:/Projects/textFile/test_file.txt";
 
     char *word = "me";
 

@@ -31,6 +31,7 @@ int searchAndCountWordInLines(char *wordToFind,char *filename){
   for(i=0; lines[i]!=NULL; i++){
   count = count + searchAndCountWordInLines(wordToFind,lines[i]);
   }
+  free(lines);
   return count;
 }
 
